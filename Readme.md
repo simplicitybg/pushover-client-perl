@@ -39,3 +39,8 @@ The message can be given either as a command line parameter following the -m arg
 2. Send a multiline message (useful for sending push notifications from Nagios)
 
         printf "%b" "This message\nwill span several lines.\nAnd \n characters will be converted to new lines!\n" | pushover.pl -a *APP-TOKEN* -k *USER-KEY* -i
+        
+## License
+pushover-client-perl is released under the MIT license
+
+* http://www.opensource.org/licenses/MIT
