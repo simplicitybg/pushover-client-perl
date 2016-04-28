@@ -67,7 +67,7 @@ At of the last update of this script, the valid Sound files (-s parameter) defin
   persistent - Persistent (long)
   echo - Pushover Echo (long)
   updown - Up Down (long)
-  none - None (silent) 
+  none - None (silent)
 
 
 ## License
