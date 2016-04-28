@@ -46,28 +46,28 @@ The message can be given either as a command line parameter following the -m arg
 ## Notes
 At of the last update of this script, the valid Sound files (-s parameter) defined on pushover.net were:
 
-  pushover - Pushover (default)
-  bike - Bike
-  bugle - Bugle
-  cashregister - Cash Register
-  classical - Classical
-  cosmic - Cosmic
-  falling - Falling
-  gamelan - Gamelan
-  incoming - Incoming
-  intermission - Intermission
-  magic - Magic
-  mechanical - Mechanical
-  pianobar - Piano Bar
-  siren - Siren
-  spacealarm - Space Alarm
-  tugboat - Tug Boat
-  alien - Alien Alarm (long)
-  climb - Climb (long)
-  persistent - Persistent (long)
-  echo - Pushover Echo (long)
-  updown - Up Down (long)
-  none - None (silent)
+	pushover - Pushover (default)
+	bike - Bike
+	bugle - Bugle
+	cashregister - Cash Register
+	classical - Classical
+	cosmic - Cosmic
+	falling - Falling
+	gamelan - Gamelan
+	incoming - Incoming
+	intermission - Intermission
+	magic - Magic
+	mechanical - Mechanical
+	pianobar - Piano Bar
+	siren - Siren
+	spacealarm - Space Alarm
+	tugboat - Tug Boat
+	alien - Alien Alarm (long)
+	climb - Climb (long)
+	persistent - Persistent (long)
+	echo - Pushover Echo (long)
+	updown - Up Down (long)
+	none - None (silent)
 
 
 ## License
