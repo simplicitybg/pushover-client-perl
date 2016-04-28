@@ -10,24 +10,6 @@ my $priority_setting = 0;
 
 my $options = {};
 getopt('akmtdurh:sbpi:', $options);
-my $usage =<<END;
-Usage: $0 [options]
-Required:
--a APP_TOKEN\t\tYour application's token
--k USER_KEY\t\tYour user token
--m MESSAGE\t\tThe message you want to send
-
-Optional:
--t TITLE\t\tThe title of your message
--d DEVICE\t\tSend the message only to DEVICE
--u URL\t\t\tA URL to send
--r URL_TITLE\t\tOptional title for the URL
--h\t\t\tThe message is high priority - bypass quiet hours (equivalent to -p 1)
--s UNIX_TIMESTAMP\tUnix timestamp of the message
--b SOUND\t\tThe sound file to play  (see https://pushover.net/api#sounds)
--p PRIORITY\t\tThe priority level to send. -2 (lowest) to 2 (highest). Overrides -h
--i Use STDIN for message input - useful if you want to have new lines in your message
-END
 
 if (!defined($options->{'a'}) || !defined($options->{'k'})) {
   pod2usage("Specify APP_TOKEN or USER_KEY");
