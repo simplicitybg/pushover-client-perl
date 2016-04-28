@@ -69,6 +69,7 @@ At of the last update of this script, the valid Sound files (-s parameter) defin
   updown - Up Down (long)
   none - None (silent) 
 
+
 ## License
 pushover-client-perl is released under the MIT license
 
