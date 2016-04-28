@@ -4,6 +4,7 @@ use warnings;
 
 use LWP::UserAgent;
 use Getopt::Std;
+use Pod::Usage;
 
 my $priority_setting = 0;
 
@@ -29,13 +30,11 @@ Optional:
 END
 
 if (!defined($options->{'a'}) || !defined($options->{'k'})) {
-  print $usage;
-  exit(1);
+  pod2usage("Specify APP_TOKEN or USER_KEY");
 }
 
 if (!defined($options->{'m'}) && !exists($options->{'i'})) {
-  print $usage;
-  exit(1);
+  pod2usage("User -m or -i to supply message");
 }
 
 $priority_setting = 1 if (defined($options->{'h'}));
@@ -46,9 +45,7 @@ if (defined($options->{'p'}))
   # accept -2,-1,0,1,+1,2,+2
   if ($options->{'p'} !~ /^(-[1-2]|0|\+{0,1}[1-2])$/)
   {
-    print "ERROR: invalid priority value\n\n";
-    print $usage;
-    exit(1);
+    pod2usage("ERROR: invalid priority value");
   }
   # strip leading +
   ($priority_setting) = ($options->{'p'} =~ s/^\+//g); 
@@ -82,3 +79,38 @@ $push_options{'sound'} = $options->{'b'} if (defined($options->{'b'}));
 
 LWP::UserAgent->new()->post("https://api.pushover.net/1/messages", \%push_options);
 
+__END__
+
+=head1 NAME
+
+pushover.pl -- Send pushover notifications from command line
+
+=head1 SYNOPSIS
+
+Usage: **pushover.pl _[options]_**
+
+    Required command-line arguments:  
+    -a APP_TOKEN        Your application's token  
+    -k USER_KEY         Your User token  
+    -m MESSAGE          The message you want to send  
+
+    Optional command-line arguments:
+    -t TITLE            The title of your message  
+    -d DEVICE           Send the message only to DEVICE  
+    -u URL              A URL to send  
+    -r URL_TITLE        Optional title for the URL  
+    -h                  The message is high priority - bypass quiet hours. Equivalent to -p 1  
+    -s UNIX_TIMESTAMP   Unix timestamp of the message 
+    -b SOUND            The Sound file to play (see https://pushover.net/api#sounds)
+    -p PRIORITY         Priority number (-2 to 2 / Lowest to Highest). Overrides -h 
+    -i                  Use STDIN for message input - useful if you want to have new lines in your message
+
+Supplying an application token, a user key and a message is mandatory.
+The message can be given either as a command line parameter following the -m argument or interactively using the -i argument. 
+The latter case is useful if you want your push message to include new lines
+
+=head1 DESCRIPTION
+
+This is a simple pushover.net client for sending push messages from the command line to devices that have the Pushover app installed.
+
+=cut
