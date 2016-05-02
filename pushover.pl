@@ -12,11 +12,11 @@ my $options = {};
 getopt('akmtdurh:sbpi:', $options);
 
 if (!defined($options->{'a'}) || !defined($options->{'k'})) {
-  pod2usage("Specify APP_TOKEN or USER_KEY");
+  pod2usage( -message => "Specify APP_TOKEN or USER_KEY", -exitval => 1);
 }
 
 if (!defined($options->{'m'}) && !exists($options->{'i'})) {
-  pod2usage("User -m or -i to supply message");
+  pod2usage( -message => "User -m or -i to supply message", -exitval => 1);
 }
 
 $priority_setting = 1 if (defined($options->{'h'}));
@@ -27,7 +27,7 @@ if (defined($options->{'p'}))
   # accept -2,-1,0,1,+1,2,+2
   if ($options->{'p'} !~ /^(-[1-2]|0|\+{0,1}[1-2])$/)
   {
-    pod2usage("ERROR: invalid priority value");
+    pod2usage( -message => "ERROR: invalid priority value", -exitval => 1);
   }
   # strip leading +
   ($priority_setting) = ($options->{'p'} =~ s/^\+//g); 
